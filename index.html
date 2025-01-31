@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mad Peeps</title>
-<script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "q2h7ncaqsv");
-</script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "q2h7ncaqsv");
+    </script>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -19,6 +19,11 @@
             text-align: center;
             background: linear-gradient(to bottom, #e0f7fa, #0288d1);
             color: #01579b;
+            transition: background 0.5s, color 0.5s;
+        }
+        .dark-mode {
+            background: #121212;
+            color: #ffffff;
         }
         header {
             background: #0277bd;
@@ -58,14 +63,20 @@
             border-radius: 10px;
             border: 3px solid #0288d1;
         }
-        audio {
-            margin-top: 20px;
-            border-radius: 10px;
+        button {
+            padding: 10px 15px;
+            margin: 10px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+        #clickCounter {
+            font-size: 1.2em;
+            margin-top: 10px;
         }
         iframe {
             width: 100%;
-            height: 600px; /* Set a fixed height */
-            margin-top: 20px; /* Add margin to separate from the audio */
+            height: 600px;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -83,16 +94,71 @@
         <h2>Meet Mad Peeps</h2>
         <p>These are my cousins who are absolutely mad!</p>
         <div class="images">
-             <img src="https://i.ibb.co/sp9z8DDm/d072f473-af1d-4f35-be55-a032329ffc1f.webp" alt="Mad Cousins">
+            <img src="https://i.ibb.co/sp9z8DDm/d072f473-af1d-4f35-be55-a032329ffc1f.webp" alt="Mad Cousins">
         </div>
     </section>
+
+    <button onclick="increaseCount()">Click Me!</button>
+    <p id="clickCounter">Clicks: 0</p>
+    <button onclick="invertColors()">Invert Colors</button>
+    <button onclick="generateFact()">Random Fun Fact</button>
+    <p id="funFact">Click to get a fun fact!</p>
+    <button onclick="toggleDarkMode()">Day/Night Mode</button>
 
     <audio controls autoplay>
         <source src="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
 
-    <!-- This is the iframe, now coming after the audio element -->
     <iframe src="https://chromedino.com/" frameborder="0" scrolling="no" loading="lazy"></iframe>
+
+    <script>
+        let count = 0;
+        function increaseCount() {
+            count++;
+            document.getElementById("clickCounter").innerText = "Clicks: " + count;
+            confetti();
+        }
+        
+        function invertColors() {
+            document.body.style.filter = (document.body.style.filter === "invert(1)") ? "invert(0)" : "invert(1)";
+        }
+        
+        function generateFact() {
+            const facts = [
+                "Bananas are berries, but strawberries aren’t!",
+                "Honey never spoils.",
+                "Octopuses have three hearts.",
+                "A day on Venus is longer than a year on Venus.",
+                "Wombat shit is cube-shaped!"
+            ];
+            document.getElementById("funFact").innerText = facts[Math.floor(Math.random() * facts.length)];
+        }
+        
+        function toggleDarkMode() {
+            document.body.classList.toggle("dark-mode");
+        }
+        
+        function confetti() {
+            const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
+            for (let i = 0; i < 50; i++) {
+                let particle = document.createElement("div");
+                particle.style.position = "absolute";
+                particle.style.left = Math.random() * window.innerWidth + "px";
+                particle.style.top = Math.random() * window.innerHeight + "px";
+                particle.style.width = "10px";
+                particle.style.height = "10px";
+                particle.style.background = colors[Math.floor(Math.random() * colors.length)];
+                particle.style.opacity = "1";
+                particle.style.transition = "opacity 2s ease-out, transform 2s ease-out";
+                document.body.appendChild(particle);
+                setTimeout(() => {
+                    particle.style.opacity = "0";
+                    particle.style.transform = "translateY(100px)";
+                    setTimeout(() => particle.remove(), 2000);
+                }, 10);
+            }
+        }
+    </script>
 </body>
 </html>
