@@ -103,7 +103,7 @@
     <button onclick="invertColors()">Invert Colors</button>
     <button onclick="generateFact()">Random Fun Fact</button>
     <p id="funFact">Click to get a fun fact!</p>
-    <button onclick="toggleDarkMode()">Day/Night Mode</button>
+    <button onclick="toggleDarkMode()">Dark mode</button>
 <!--  -->
     <!-- <audio controls autoplay>
         <source src="https://codeskulptor-demos.commondatastorage.googleapis.com/pang/paza-moduless.mp3" type="audio/mpeg">
@@ -126,12 +126,53 @@
         
         function generateFact() {
             const facts = [
-                "Bananas are berries, but strawberries aren’t!",
-                "Honey never spoils.",
-                "Octopuses have three hearts.",
-                "A day on Venus is longer than a year on Venus.",
-                "Wombat shit is cube-shaped!"
-            ];
+    "Bananas are berries, but strawberries aren’t!",
+    "Honey never spoils.",
+    "Octopuses have three hearts.",
+    "A day on Venus is longer than a year on Venus.",
+    "Wombat shit is cube-shaped!",
+    "A jiffy is an actual unit of time – it’s 1/100th of a second.",
+    "Cows have best friends and get stressed when they are separated.",
+    "A group of flamingos is called a 'flamboyance.'",
+    "A sneeze can travel up to 100 miles per hour.",
+    "A blue whale’s heart is the size of a small car.",
+    "Avocados are fruits, not vegetables.",
+    "The Eiffel Tower can grow by up to 6 inches in summer due to the expansion of iron.",
+    "The longest hiccuping spree lasted 68 years.",
+    "Koalas sleep up to 22 hours a day.",
+    "A crocodile can’t stick its tongue out.",
+    "Honeybees can recognize human faces.",
+    "The shortest war in history was between Britain and Zanzibar on August 27, 1896. It lasted just 38 minutes.",
+    "The inventor of the Pringles can is buried in one.",
+    "A single strand of spaghetti is called a 'spaghetto.'",
+    "You can’t hum while holding your nose.",
+    "Some turtles can breathe through their butts.",
+    "It rains diamonds on Jupiter and Saturn.",
+    "The moon is slowly drifting away from Earth at a rate of about 1.5 inches per year.",
+    "Apples float in water because 25% of their volume is air.",
+    "Sloths can hold their breath for up to 40 minutes underwater.",
+    "The shortest commercial flight in the world is in Scotland and lasts just 47 seconds.",
+    "A giraffe’s neck contains the same number of vertebrae as a human's – just seven!",
+    "A day on Mars is just over 24 hours – 24 hours, 39 minutes, and 35 seconds.",
+    "The heart of a shrimp is located in its head.",
+    "The longest time between two twins being born is 87 days.",
+    "A 'moment' technically refers to 90 seconds.",
+    "The tongue is the only muscle in the human body that is attached from one end.",
+    "There’s enough DNA in the human body to stretch from the sun to Pluto and back – 17 times.",
+    "The original name for Bank of America was 'Bank of Italy.'",
+    "Penguins propose to their mates with a pebble.",
+    "A 'pound' is not the only measure of weight in the U.S. – the ton is too!",
+    "A bat can eat up to 1,000 insects per hour.",
+    "The average person walks the equivalent of three times around the world in a lifetime.",
+    "There are more fake flamingos in the world than real ones.",
+    "Cats can make over 100 different sounds.",
+    "There is a species of jellyfish known as Turritopsis dohrnii that is biologically immortal.",
+    "Napoleon Bonaparte was once attacked by a horde of bunnies.",
+    "A single strand of hair can hold up to 100 grams of weight.",
+    "The dot over a lowercase 'i' and 'j' is called a 'tittle.'",
+    "The longest wedding veil was the same length as 63.5 football fields."
+];
+
             document.getElementById("funFact").innerText = facts[Math.floor(Math.random() * facts.length)];
         }
         
