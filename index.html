@@ -4,52 +4,70 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mad Peeps</title>
-   <script type="text/javascript">
-    (function(c,l,a,r,i,t,y){
-        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window, document, "clarity", "script", "q2h7ncaqsv");
-</script>
+    <script type="text/javascript">
+        (function(c,l,a,r,i,t,y){
+            c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+            t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+            y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+        })(window, document, "clarity", "script", "q2h7ncaqsv");
+    </script>
     <style>
+        /* Modern and Sleek CSS */
         body {
             font-family: 'Arial', sans-serif;
             margin: 0;
             padding: 0;
             text-align: center;
-            background: linear-gradient(to bottom, #e0f7fa, #0288d1);
+            background: linear-gradient(135deg, #e0f7fa, #0288d1);
             color: #01579b;
             transition: background 0.5s, color 0.5s;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
+
         .dark-mode {
-            background: #121212;
+            background: linear-gradient(135deg, #121212, #333333);
             color: #ffffff;
         }
+
         header {
             background: #0277bd;
             color: white;
             padding: 20px 0;
             font-size: 2em;
+            width: 100%;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
+
         nav {
             margin: 20px 0;
         }
+
         nav a {
             margin: 0 15px;
             text-decoration: none;
             color: #ffffff;
             font-weight: bold;
             font-size: 1.1em;
+            transition: color 0.3s ease;
         }
+
         nav a:hover {
             color: #ffeb3b;
         }
+
         section {
             padding: 20px;
-            background-color: #ffffff;
+            background-color: rgba(255, 255, 255, 0.9);
             margin: 10px;
             border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 800px;
         }
+
         .images {
             display: flex;
             justify-content: center;
@@ -57,31 +75,64 @@
             flex-wrap: wrap;
             margin-top: 20px;
         }
+
         .images img {
             width: 200px;
             height: auto;
             border-radius: 10px;
             border: 3px solid #0288d1;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
+
+        .images img:hover {
+            transform: scale(1.05);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
         button {
             padding: 10px 15px;
             margin: 10px;
             font-size: 1em;
             cursor: pointer;
+            background: #0277bd;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
+
+        button:hover {
+            background: #0288d1;
+            transform: translateY(-2px);
+        }
+
+        button:active {
+            transform: translateY(0);
+        }
+
         #clickCounter {
             font-size: 1.2em;
             margin-top: 10px;
         }
+
         iframe {
             width: 100%;
             height: 600px;
             margin-top: 20px;
+            border-radius: 10px;
+            border: none;
         }
+
         #quizResult {
             font-size: 1.2em;
             margin-top: 10px;
             color: #d32f2f;
+        }
+
+        /* Confetti Animation */
+        @keyframes confetti-fall {
+            0% { transform: translateY(-100px) rotate(0deg); }
+            100% { transform: translateY(100vh) rotate(360deg); }
         }
     </style>
 </head>
@@ -103,16 +154,15 @@
         </div>
     </section>
 
-    <button onclick="increaseCount()">Im Mad!</button>
+    <button onclick="increaseCount()">I'm Mad!</button>
     <p id="clickCounter">Clicks: 0</p>
     <button onclick="invertColors()">Invert Colors</button>
     <button onclick="generateFact()">Random Fun Fact</button>
     <p id="funFact">Click to get a fun fact!</p>
-    <button onclick="toggleDarkMode()">Dark mode</button>
+    <button onclick="toggleDarkMode()">Dark Mode</button>
     <button onclick="startQuiz()">Quiz Me!</button>
     <p id="quizResult"></p>
 
-    
     <script>
         let count = 0;
         function increaseCount() {
@@ -120,11 +170,11 @@
             document.getElementById("clickCounter").innerText = "Clicks: " + count;
             confetti();
         }
-        
+
         function invertColors() {
             document.body.style.filter = (document.body.style.filter === "invert(1)") ? "invert(0)" : "invert(1)";
         }
-        
+
         function generateFact() {
             const facts = [
                 "Bananas are berries, but strawberries aren’t!",
@@ -175,11 +225,11 @@
             ];
             document.getElementById("funFact").innerText = facts[Math.floor(Math.random() * facts.length)];
         }
-        
+
         function toggleDarkMode() {
             document.body.classList.toggle("dark-mode");
         }
-        
+
         function confetti() {
             const colors = ["#ff0000", "#00ff00", "#0000ff", "#ffff00", "#ff00ff", "#00ffff"];
             for (let i = 0; i < 50; i++) {
@@ -191,67 +241,63 @@
                 particle.style.height = "10px";
                 particle.style.background = colors[Math.floor(Math.random() * colors.length)];
                 particle.style.opacity = "1";
-                particle.style.transition = "opacity 2s ease-out, transform 2s ease-out";
+                particle.style.borderRadius = "50%";
+                particle.style.animation = "confetti-fall 2s ease-out forwards";
                 document.body.appendChild(particle);
-                setTimeout(() => {
-                    particle.style.opacity = "0";
-                    particle.style.transform = "translateY(100px)";
-                    setTimeout(() => particle.remove(), 2000);
-                }, 10);
+                setTimeout(() => particle.remove(), 2000);
             }
         }
 
         function startQuiz() {
             const questions = [
-  { "question": "What is the capital of France?", "answer": "Paris" },
-  { "question": "Who wrote the Harry Potter series?", "answer": "J.K. Rowling" },
-  { "question": "What is the chemical symbol for water?", "answer": "H2O" },
-  { "question": "Which planet is known as the Red Planet?", "answer": "Mars" },
-  { "question": "What is the tallest mountain in the world?", "answer": "Mount Everest" },
-  { "question": "Who painted the Mona Lisa?", "answer": "Leonardo da Vinci" },
-  { "question": "What is the largest ocean on Earth?", "answer": "Pacific Ocean" },
-  { "question": "In Harry Potter, what house is Harry in?", "answer": "Gryffindor" },
-  { "question": "Who was the first president of the United States?", "answer": "George Washington" },
-  { "question": "What is the hardest natural substance on Earth?", "answer": "Diamond" },
-  { "question": "How many continents are there?", "answer": "Seven" },
-  { "question": "Which element has the chemical symbol 'O'?", "answer": "Oxygen" },
-  { "question": "What is the main ingredient in guacamole?", "answer": "Avocado" },
-  { "question": "Who discovered gravity?", "answer": "Isaac Newton" },
-  { "question": "In Harry Potter, what spell is used to disarm an opponent?", "answer": "Expelliarmus" },
-  { "question": "Which country is famous for inventing pizza?", "answer": "Italy" },
-  { "question": "What year did World War II end?", "answer": "1945" },
-  { "question": "What is the smallest planet in our solar system?", "answer": "Mercury" },
-  { "question": "What is the longest river in the world?", "answer": "Nile River" },
-  { "question": "In Harry Potter, what is the name of Hermione's pet cat?", "answer": "Crookshanks" },
-  { "question": "What is the capital of Japan?", "answer": "Tokyo" },
-  { "question": "Who invented the light bulb?", "answer": "Thomas Edison" },
-  { "question": "Which sport is known as the 'king of sports'?", "answer": "Soccer (Football)" },
-  { "question": "What is the national flower of India?", "answer": "Lotus" },
-  { "question": "In Harry Potter, who is the Half-Blood Prince?", "answer": "Severus Snape" },
-  { "question": "Which gas do plants absorb from the atmosphere?", "answer": "Carbon dioxide" },
-  { "question": "What is the largest animal on Earth?", "answer": "Blue whale" },
-  { "question": "Who is the Greek god of war?", "answer": "Ares" },
-  { "question": "Which two elements make up table salt?", "answer": "Sodium and Chlorine" },
-  { "question": "In Harry Potter, what position does Harry play in Quidditch?", "answer": "Seeker" },
-  { "question": "Which planet is closest to the Sun?", "answer": "Mercury" },
-  { "question": "What is the currency of the United Kingdom?", "answer": "Pound Sterling" },
-  { "question": "Which animal is known as the 'king of the jungle'?", "answer": "Lion" },
-  { "question": "What is the fastest land animal?", "answer": "Cheetah" },
-  { "question": "In Harry Potter, what is the name of Dumbledore’s phoenix?", "answer": "Fawkes" },
-  { "question": "What is the boiling point of water in Celsius?", "answer": "100°C" },
-  { "question": "What does DNA stand for?", "answer": "Deoxyribonucleic Acid" },
-  { "question": "Which planet has the most moons?", "answer": "Saturn" },
-  { "question": "In Harry Potter, what is the name of Hagrid’s pet dragon?", "answer": "Norbert" },
-  { "question": "What is the capital of Australia?", "answer": "Canberra" },
-  { "question": "Which bird is known for its ability to mimic sounds?", "answer": "Parrot" },
-  { "question": "What is the main language spoken in Brazil?", "answer": "Portuguese" },
-  { "question": "How many bones are in the adult human body?", "answer": "206" },
-  { "question": "In Harry Potter, what is the name of the train that takes students to Hogwarts?", "answer": "Hogwarts Express" },
-  { "question": "What is the square root of 64?", "answer": "8" },
-  { "question": "Who directed the movie Titanic?", "answer": "James Cameron" },
-  { "question": "Which is the largest desert in the world?", "answer": "Antarctica" }
-];
-
+                { "question": "What is the capital of France?", "answer": "Paris" },
+                { "question": "Who wrote the Harry Potter series?", "answer": "J.K. Rowling" },
+                { "question": "What is the chemical symbol for water?", "answer": "H2O" },
+                { "question": "Which planet is known as the Red Planet?", "answer": "Mars" },
+                { "question": "What is the tallest mountain in the world?", "answer": "Mount Everest" },
+                { "question": "Who painted the Mona Lisa?", "answer": "Leonardo da Vinci" },
+                { "question": "What is the largest ocean on Earth?", "answer": "Pacific Ocean" },
+                { "question": "In Harry Potter, what house is Harry in?", "answer": "Gryffindor" },
+                { "question": "Who was the first president of the United States?", "answer": "George Washington" },
+                { "question": "What is the hardest natural substance on Earth?", "answer": "Diamond" },
+                { "question": "How many continents are there?", "answer": "Seven" },
+                { "question": "Which element has the chemical symbol 'O'?", "answer": "Oxygen" },
+                { "question": "What is the main ingredient in guacamole?", "answer": "Avocado" },
+                { "question": "Who discovered gravity?", "answer": "Isaac Newton" },
+                { "question": "In Harry Potter, what spell is used to disarm an opponent?", "answer": "Expelliarmus" },
+                { "question": "Which country is famous for inventing pizza?", "answer": "Italy" },
+                { "question": "What year did World War II end?", "answer": "1945" },
+                { "question": "What is the smallest planet in our solar system?", "answer": "Mercury" },
+                { "question": "What is the longest river in the world?", "answer": "Nile River" },
+                { "question": "In Harry Potter, what is the name of Hermione's pet cat?", "answer": "Crookshanks" },
+                { "question": "What is the capital of Japan?", "answer": "Tokyo" },
+                { "question": "Who invented the light bulb?", "answer": "Thomas Edison" },
+                { "question": "Which sport is known as the 'king of sports'?", "answer": "Soccer (Football)" },
+                { "question": "What is the national flower of India?", "answer": "Lotus" },
+                { "question": "In Harry Potter, who is the Half-Blood Prince?", "answer": "Severus Snape" },
+                { "question": "Which gas do plants absorb from the atmosphere?", "answer": "Carbon dioxide" },
+                { "question": "What is the largest animal on Earth?", "answer": "Blue whale" },
+                { "question": "Who is the Greek god of war?", "answer": "Ares" },
+                { "question": "Which two elements make up table salt?", "answer": "Sodium and Chlorine" },
+                { "question": "In Harry Potter, what position does Harry play in Quidditch?", "answer": "Seeker" },
+                { "question": "Which planet is closest to the Sun?", "answer": "Mercury" },
+                { "question": "What is the currency of the United Kingdom?", "answer": "Pound Sterling" },
+                { "question": "Which animal is known as the 'king of the jungle'?", "answer": "Lion" },
+                { "question": "What is the fastest land animal?", "answer": "Cheetah" },
+                { "question": "In Harry Potter, what is the name of Dumbledore’s phoenix?", "answer": "Fawkes" },
+                { "question": "What is the boiling point of water in Celsius?", "answer": "100°C" },
+                { "question": "What does DNA stand for?", "answer": "Deoxyribonucleic Acid" },
+                { "question": "Which planet has the most moons?", "answer": "Saturn" },
+                { "question": "In Harry Potter, what is the name of Hagrid’s pet dragon?", "answer": "Norbert" },
+                { "question": "What is the capital of Australia?", "answer": "Canberra" },
+                { "question": "Which bird is known for its ability to mimic sounds?", "answer": "Parrot" },
+                { "question": "What is the main language spoken in Brazil?", "answer": "Portuguese" },
+                { "question": "How many bones are in the adult human body?", "answer": "206" },
+                { "question": "In Harry Potter, what is the name of the train that takes students to Hogwarts?", "answer": "Hogwarts Express" },
+                { "question": "What is the square root of 64?", "answer": "8" },
+                { "question": "Who directed the movie Titanic?", "answer": "James Cameron" },
+                { "question": "Which is the largest desert in the world?", "answer": "Antarctica" }
+            ];
 
             const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
             const userAnswer = prompt(randomQuestion.question);
