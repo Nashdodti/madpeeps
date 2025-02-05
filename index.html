@@ -247,25 +247,16 @@
 
         function startQuiz() {
             const questions = [
-              { "question": "Who wrote the Harry Potter series?", "answer": "J.K. Rowling" }
-
-{ "question": "In Harry Potter, what house is Harry in?", "answer": "Gryffindor" }
-
-{ "question": "In Harry Potter, what spell is used to disarm an opponent?", "answer": "Expelliarmus" }
-
-{ "question": "In Harry Potter, what is the name of Hermione's pet cat?", "answer": "Crookshanks" }
-
-{ "question": "In Harry Potter, who is the Half-Blood Prince?", "answer": "Severus Snape" }
-
-{ "question": "In Harry Potter, what position does Harry play in Quidditch?", "answer": "Seeker" }
-
-{ "question": "In Harry Potter, what is the name of Dumbledore’s phoenix?", "answer": "Fawkes" }
-
-{ "question": "In Harry Potter, what is the name of Hagrid’s pet dragon?", "answer": "Norbert" }
-
-{ "question": "In Harry Potter, what is the name of the train that takes students to Hogwarts?", "answer": "Hogwarts Express" }
+                { "question": "Who wrote the Harry Potter series?", "answer": "J.K. Rowling" },
+                { "question": "In Harry Potter, what house is Harry in?", "answer": "Gryffindor" },
+                { "question": "In Harry Potter, what spell is used to disarm an opponent?", "answer": "Expelliarmus" },
+                { "question": "In Harry Potter, what is the name of Hermione's pet cat?", "answer": "Crookshanks" },
+                { "question": "In Harry Potter, who is the Half-Blood Prince?", "answer": "Severus Snape" },
+                { "question": "In Harry Potter, what position does Harry play in Quidditch?", "answer": "Seeker" },
+                { "question": "In Harry Potter, what is the name of Dumbledore’s phoenix?", "answer": "Fawkes" },
+                { "question": "In Harry Potter, what is the name of Hagrid’s pet dragon?", "answer": "Norbert" },
+                { "question": "In Harry Potter, what is the name of the train that takes students to Hogwarts?", "answer": "Hogwarts Express" }
             ];
-
             const randomQuestion = questions[Math.floor(Math.random() * questions.length)];
             const userAnswer = prompt(randomQuestion.question);
 
